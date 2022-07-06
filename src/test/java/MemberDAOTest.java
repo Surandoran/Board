@@ -21,4 +21,13 @@ public class MemberDAOTest {
         }
     }
 
+    @Test
+    public void Test2() {
+        //MemberDAO's Select(email)
+        MemberDAO dao = MemberDAO.getInstance();
+        MemberDTO dto = dao.select("example@example.com");
+        System.out.println("결과 : " + dto.toString());
+
+    }
+
 }

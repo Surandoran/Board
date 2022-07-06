@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
   <%@include file="/resources/includes/link.jsp" %>
+  <link rel="stylesheet" href="resources/css/common.css">
 </head>
 <body>
   <div class="container-md" style="width: 60%; margin:100px auto; text-align: center">

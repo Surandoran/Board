@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import com.example.controller.auth.LoginController;
+import com.example.controller.auth.LogoutController;
+import com.example.controller.member.MemberInfoController;
 import com.example.controller.member.MemberJoinController;
 
 import javax.servlet.ServletException;
@@ -18,7 +21,14 @@ public class FrontController extends HttpServlet {
     public void init() throws ServletException {
         list = new HashMap<>();
 
+        //회원관련
         list.put("/MemberJoin.do", new MemberJoinController());
+        list.put("/MemberInfo.do", new MemberInfoController());
+        //인증관련
+        list.put("/Login.do", new LoginController());
+        list.put("/Logout.do", new LogoutController());
+
+        //게시판관련련
     }
 
     @Override
