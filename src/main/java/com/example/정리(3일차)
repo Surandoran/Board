@@ -1,0 +1,18 @@
+회원정보 수정
+
+FrontController "/MemberUpdate.do", MemberUpdateController 추가
+MemberUpdateController
+flag == null: /WEB-INF/member/password.jsp
+flag != null: 1.파라미터 받기(수정 값)
+              2.패스워드 체크
+              3.패스워드가 일치하면 dto 수정 내용담는다
+              4.service.MemberUpdate(dto) -> dao.update -> DB 수정
+              5.req.setAttribute("dto", dto)
+              6./WEB-INF/member/MyInfo.jsp
+
+
+-------------------------------------
+필터추가
+-------------------------------------
+
+[참고]

@@ -20,13 +20,15 @@ public class MemberInfoController implements SubController {
         //파라미터 받기
 
         try {
+
             //서비스 실행
                 HttpSession session = req.getSession();
                 String email = (String) session.getAttribute("email");
                 MemberDTO dto = service.MemberSearch(email);
-                req.setAttribute("email", dto.getEmail());
-                req.setAttribute("addr1", dto.getAddr1());
-                req.setAttribute("addr2", dto.getAddr2());
+                req.setAttribute("dto", dto);
+//                req.setAttribute("email", dto.getEmail());
+//                req.setAttribute("addr1", dto.getAddr1());
+//                req.setAttribute("addr2", dto.getAddr2());
                 //아이디 조회 실패.. 해당 아이디가 없습니다.
                 req.getRequestDispatcher("/WEB-INF/member/MyInfo.jsp").forward(req, resp);
             }catch (Exception e){

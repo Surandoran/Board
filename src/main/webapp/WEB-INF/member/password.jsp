@@ -1,8 +1,8 @@
 <%@ page import="com.example.dto.MemberDTO" %><%--
   Created by IntelliJ IDEA.
   User: 손필욱
-  Date: 2022-07-06
-  Time: 오후 12:38
+  Date: 2022-07-07
+  Time: 오전 10:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
@@ -20,6 +20,17 @@
     <%@include file="/resources/includes/nav.jsp" %>
     <%--    MainContents--%>
     <%
+        String MSG = (String) request.getAttribute("MSG");
+        if (MSG != null) {
+    %>
+    <script>
+        alert("<%=MSG%>")
+    </script>
+    <%
+        }
+
+    %>
+    <%
         MemberDTO dto = (MemberDTO) request.getAttribute("dto");
 //            String email = (String) request.getAttribute("email");
 //            String addr1 = (String) request.getAttribute("addr1");
@@ -28,32 +39,17 @@
     <div id="maincontents" style="border: 1px solid gray; margin-top: 15px">
         <form action="/MemberUpdate.do" method="post">
             <table class="table w-75 table-striped" style="margin:100px auto">
-                <caption>회원 정보</caption>
                 <tr>
-                    <td>Email</td>
-                    <td><input name="email" value="<%=dto.getEmail()%>" disabled></td>
+                    <td><input type="password" name="pwd" class="form-control"></td>
                 </tr>
                 <tr>
-                    <td>Addr1</td>
-                    <td><input name="addr1" value="<%=dto.getAddr1()%>"></td>
-                </tr>
-                <tr>
-                    <td>Addr2</td>
-                    <td><input name="addr2" value="<%=dto.getAddr2()%>"></td>
-                </tr>
-                <tr>
-                    <td>password</td>
-                    <td><input name="pwd" type="password" value="<%=dto.getPwd()%>"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" value="정보수정" class="btn btn-primary w-50">
-                    </td>
-                    <td>
-                        <a class="btn btn-secondary w-50">메인이동</a>
-                    </td>
+                    <td><input type="submit" value="확인" class="btn btn-primary"></td>
                 </tr>
             </table>
+            <input type="hidden" name="flag" value="true">
+            <input type="hidden" name="addr1" value="<%=request.getParameter("addr1")%>">
+            <input type="hidden" name="addr2" value="<%=request.getParameter("addr2")%>">
+            <input type="hidden" name="newpwd" value="<%=request.getParameter("pwd")%>">
         </form>
     </div>
     <%--    Footer--%>

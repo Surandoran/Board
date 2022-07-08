@@ -91,4 +91,24 @@ public class MemberDAO {
         return null;
     }
 
+    public boolean Update(MemberDTO dto) {
+
+        try {
+            pstmt = conn.prepareStatement("update tbl_member set addr1=?,addr2=?,pwd=?,grade=? where email=?");
+            pstmt.setString(1, dto.getAddr1());
+            pstmt.setString(2, dto.getAddr2());
+            pstmt.setString(3, dto.getPwd());
+            pstmt.setInt(4, dto.getGrade());
+            pstmt.setString(5, dto.getEmail());
+            int result = pstmt.executeUpdate();
+
+            if(result > 0)
+                return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 }

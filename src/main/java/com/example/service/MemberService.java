@@ -34,6 +34,9 @@ public class MemberService {
         return dao.select(email);
     }
 
+    public boolean MemberUpdate(MemberDTO dto) {
+        return dao.Update(dto);
+    }
 
 
 }

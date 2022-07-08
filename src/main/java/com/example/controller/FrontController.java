@@ -2,8 +2,13 @@ package com.example.controller;
 
 import com.example.controller.auth.LoginController;
 import com.example.controller.auth.LogoutController;
+import com.example.controller.board.BoardListController;
+import com.example.controller.board.BoardPostController;
 import com.example.controller.member.MemberInfoController;
 import com.example.controller.member.MemberJoinController;
+import com.example.controller.member.MemberUpdateController;
+import com.example.controller.notice.NoticeListController;
+import com.example.controller.notice.NoticePostController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +29,20 @@ public class FrontController extends HttpServlet {
         //회원관련
         list.put("/MemberJoin.do", new MemberJoinController());
         list.put("/MemberInfo.do", new MemberInfoController());
+        list.put("/MemberUpdate.do", new MemberUpdateController());
+
+
         //인증관련
         list.put("/Login.do", new LoginController());
         list.put("/Logout.do", new LogoutController());
 
         //게시판관련련
+        list.put("/Board/list.do", new BoardListController());
+        list.put("/Board/post.do", new BoardPostController());
+
+        //공지사항
+        list.put("/Notice/list.do", new NoticeListController());
+        list.put("/Notice/post.do", new NoticePostController());
     }
 
     @Override
