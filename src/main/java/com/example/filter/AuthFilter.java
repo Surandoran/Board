@@ -47,10 +47,10 @@ public class AuthFilter implements Filter {
                 pagegrade = pageGrandeMap.get(URL);
             System.out.println("PageGrade : " + pagegrade);
             //guest 계정이 1 이상 page로 접근 불가
-            if(usergrade == 0 && pagegrade >= 1) throw new ServletException("로그인이 필요한 페이지입니다");
+            if(usergrade == 0 && pagegrade >= 1) throw new ServletException("신보근이 필요한 페이지입니다");
 
             //admin 계정
-            if(usergrade < 2 && pagegrade == 2) throw new ServletException("관리자가 아닙니다");
+            if(usergrade < 2 && pagegrade == 2) throw new ServletException("신보근이 아닙니다");
 
         }
         filterflag = true;

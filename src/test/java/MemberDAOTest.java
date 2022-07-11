@@ -1,7 +1,12 @@
+import com.example.dao.BoardDAO;
 import com.example.dao.MemberDAO;
+import com.example.dto.BoardDTO;
 import com.example.dto.MemberDTO;
 import com.example.service.MemberService;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAOTest {
 
@@ -63,6 +68,20 @@ public class MemberDAOTest {
         dto.setGrade(0);
 
         memberService.MemberInsert(dto);
+    }
+
+    @Test
+    public void Test5() {
+        BoardDAO dao = BoardDAO.getInstance();
+
+        List<BoardDTO> list = dao.Select(5, 10);
+
+//        list.forEach(dto -> System.out.println(dto));
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+
     }
 
 }
