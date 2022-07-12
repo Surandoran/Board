@@ -27,4 +27,9 @@ public class BoardService {
         return dao.Select(start, end);
     }
 
+    //토탈 카운트 추가
+    public int getTotalCnt() {
+        return dao.getTotalCount(); // 컨트롤러가 사용함
+    }
+
 }

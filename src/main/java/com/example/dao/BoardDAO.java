@@ -62,8 +62,8 @@ public class BoardDAO {
                 {
                     dto=new BoardDTO();
                     dto.setNo(rs.getInt("no"));
-                    dto.setTitle(rs.getNString("title"));
-                    dto.setContent(rs.getNString("content"));
+                    dto.setTitle(rs.getString("title"));
+                    dto.setContent(rs.getString("content"));
                     dto.setWriter(rs.getString("writer"));
                     dto.setRegdate(rs.getString("regdate"));
                     dto.setPwd(rs.getString("pwd"));
@@ -73,17 +73,34 @@ public class BoardDAO {
                     dto.setCount(rs.getInt("count"));
                     list.add(dto);
                 }
-                return list;
             } catch (Exception e) {
                 e.printStackTrace();
             }finally {
                 try {rs.close();} catch (Exception e) {e.printStackTrace();}
                 try {pstmt.close();} catch (Exception e) {e.printStackTrace();}
             }
-
-
-            return null;
+            return list;
         }
+    //모든 게시물 개수 조회
+    public int getTotalCount()
+    {
+        int result = 0;
+        try {
+
+            pstmt = conn.prepareStatement("select count(*) from tbl_board");
+            rs = pstmt.executeQuery();
+            rs.next(); // 한번 내려감 첫번째 나오는 열의 값을 int
+            result = rs.getInt(1); // 잡아서 담는다
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {rs.close();}catch(Exception e) {e.printStackTrace();}
+            try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
+        }
+        return result;
+    }
 
 
     }

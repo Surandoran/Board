@@ -83,5 +83,11 @@ public class MemberDAOTest {
         }
 
     }
+    @Test
+    public void Test6()   {
+        BoardDAO dao= BoardDAO.getInstance();
+        int result = dao.getTotalCount();
+        System.out.println("게시물 건수 :" + result);
+    }
 
 }
