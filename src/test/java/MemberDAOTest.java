@@ -11,7 +11,7 @@ import java.util.List;
 public class MemberDAOTest {
 
     @Test
-    public void test(){
+    public void test() {
         MemberDTO dto = new MemberDTO();
         dto.setEmail("example@example.com");
         dto.setPwd("1234");
@@ -20,9 +20,9 @@ public class MemberDAOTest {
 
         MemberDAO dao = MemberDAO.getInstance();
         boolean result = dao.insert(dto);
-        if(result) {
+        if (result) {
             System.out.println("인쎁성공");
-        } else{
+        } else {
             System.out.println("인쎁실패");
         }
     }
@@ -83,11 +83,25 @@ public class MemberDAOTest {
         }
 
     }
+
     @Test
-    public void Test6()   {
-        BoardDAO dao= BoardDAO.getInstance();
+    public void Test6() {
+        BoardDAO dao = BoardDAO.getInstance();
         int result = dao.getTotalCount();
         System.out.println("게시물 건수 :" + result);
+    }
+
+    @Test
+    public void Test7() {
+        BoardDAO dao = BoardDAO.getInstance();
+        BoardDTO dto = new BoardDTO();
+        dto.setTitle("NEWTITLE");
+        dto.setContent("NEWCONTENT");
+        dto.setWriter("NEWWRITER");
+        dto.setPwd("112233");
+        dto.setIp("192.168.10.1");
+
+        dao.Insert(dto);
     }
 
 }

@@ -15,14 +15,16 @@ public class BoardService {
     private static BoardService instance = null;
 
     public static BoardService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new BoardService();
         }
         return instance;
     }
+
     private BoardService() {
 
     }
+
     public List<BoardDTO> getBoardList(int start, int end) {
         return dao.Select(start, end);
     }
@@ -30,6 +32,11 @@ public class BoardService {
     //토탈 카운트 추가
     public int getTotalCnt() {
         return dao.getTotalCount(); // 컨트롤러가 사용함
+    }
+
+    //글 작성
+    public boolean PostBoard(BoardDTO dto) {
+        return dao.Insert(dto);
     }
 
 }

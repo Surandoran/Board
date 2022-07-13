@@ -28,7 +28,8 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">board</li>
+                <li class="breadcrumb-item"><a href="#">Board</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Post</li>
             </ol>
         </nav>
 
@@ -89,7 +90,20 @@
                 form.action = "/Board/list.do";
                 form.submit();
             }
+
+            /* 처음으로 이동 처리 */
+            function init() {
+                form = document.initFrm;
+                form.nowPage.value = 1;
+                form.action = "/Board/list.do";
+                form.submit();
+            }
+
         </script>
+
+        <form action="" name="initFrm" method="get">
+            <input type="hidden" name="nowPage">
+        </form>
 
 
         <!-- 페이징 처리 폼 -->
@@ -104,8 +118,8 @@
             <tr>
                 <td style="border: 0px;"><span style="color: darkred;"> <%=nowPage%></span>/ <%=totalPage %> Page</td>
                 <td style="border:0px; text-align: right;">
-                    <button class="btn btn-secondary">처음으로</button>
-                    <button class="btn btn-secondary">글쓰기</button>
+                    <button class="btn btn-secondary" onclick="init()">처음으로</button>
+                    <a class="btn btn-secondary" href="/Board/post.do">글쓰기</a>
                 </td>
             </tr>
         </table>
