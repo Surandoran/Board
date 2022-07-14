@@ -2,15 +2,13 @@ package com.example.dao;
 
 import com.example.dto.MemberDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+
 
 public class MemberDAO {
 
     //DB연결
-    private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+    private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
     private String id = "book_ex";
     private String pw = "1234";
 
@@ -57,8 +55,7 @@ public class MemberDAO {
 
         }catch (Exception e) {
             e.printStackTrace();
-        }finally {try{pstmt.close();}catch (Exception e) {e.printStackTrace();}}
-
+        }
         return false;
     }
 
@@ -66,7 +63,7 @@ public class MemberDAO {
 
         MemberDTO dto = new MemberDTO();
         try {
-            pstmt = conn.prepareStatement("select * from tbl_member where email=?");
+            pstmt = conn.prepareStatement("select * from tbl_member where EMAIL=?");
             pstmt.setString(1, email);
 
             rs = pstmt.executeQuery();
@@ -84,8 +81,6 @@ public class MemberDAO {
 
         }catch (Exception e) {
             e.printStackTrace();
-        }finally {try{pstmt.close();}catch (Exception e) {e.printStackTrace();}
-            try{rs.close();}catch (Exception e) {e.printStackTrace();}
         }
 
         return null;

@@ -2,18 +2,15 @@ package com.example.dao;
 
 import com.example.dto.BoardDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDAO {
 
     //DB연결
-    private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-    private String id = "book_ex";
+    private String url = "jdbc:oracle:thin:@localhost:1521:ocrl";
+    private String id = "BOOK_EX";
     private String pw = "1234";
 
     private Connection conn = null;
@@ -40,12 +37,13 @@ public class BoardDAO {
         }
     }
 
-    //
-    public List<BoardDTO> Select(int start, int end) {
-        ArrayList<BoardDTO> list = new ArrayList();
+
+    // 시작페이지, 끝페이지 번호 받아서 조회
+    public List<BoardDTO> Select(int start, int end)
+    {
+        ArrayList<BoardDTO> list = new ArrayList<>();
         BoardDTO dto = null;
         try {
-
             String sql =
                     "select rownum rn, no , title, content, writer, regdate, pwd, count, ip, filename, filesize"
                             + " from"
@@ -57,11 +55,11 @@ public class BoardDAO {
                             + " where rn >= ?";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, end);
-            pstmt.setInt(2, start);
+            pstmt.setInt(1, start);
+            pstmt.setInt(2, end);
             rs = pstmt.executeQuery();
-
-            while (rs.next()) {
+            while(rs.next())
+            {
                 dto = new BoardDTO();
                 dto.setNo(rs.getInt("no"));
                 dto.setTitle(rs.getString("title"));
@@ -123,12 +121,14 @@ public class BoardDAO {
     public boolean Insert(BoardDTO dto) {
 
         try {
-            pstmt = conn.prepareStatement("insert into tbl_board values(tbl_board_seq.NEXTVAL,?,?,?,sysdate,?,0,?,0,0)");
+            pstmt = conn.prepareStatement("insert into tbl_board values(tbl_board_seq.NEXTVAL,?,?,?,sysdate,?,0,?,?,?)");
             pstmt.setString(1, dto.getTitle());
             pstmt.setString(2, dto.getContent());
             pstmt.setString(3, dto.getWriter());
             pstmt.setString(4, dto.getPwd());
             pstmt.setString(5, dto.getIp());
+            pstmt.setString(6, dto.getFilename());
+            pstmt.setString(7, dto.getFilesize());
 
             int result = pstmt.executeUpdate();
 
