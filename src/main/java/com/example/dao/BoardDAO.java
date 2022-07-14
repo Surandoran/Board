@@ -2,20 +2,24 @@ package com.example.dao;
 
 import com.example.dto.BoardDTO;
 
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDAO {
 
     //DB연결
-    private String url = "jdbc:oracle:thin:@localhost:1521:ocrl";
-    private String id = "BOOK_EX";
+    private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+    private String id = "book_ex";
     private String pw = "1234";
 
-    private Connection conn = null;
-    private PreparedStatement pstmt = null;
-    private ResultSet rs = null;
+    private Connection conn;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
 
     //SingleTon Pattern
     private static BoardDAO instance;
@@ -27,12 +31,11 @@ public class BoardDAO {
     }
 
     private BoardDAO() {
-        try {
+        try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(url, id, pw);
-            System.out.println("DBConnected...");
-
-        } catch (Exception e) {
+            conn = DriverManager.getConnection(url,id,pw);
+            System.out.println("DBConnected..");
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

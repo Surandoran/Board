@@ -2,7 +2,10 @@ package com.example.dao;
 
 import com.example.dto.MemberDTO;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public class MemberDAO {
@@ -12,9 +15,9 @@ public class MemberDAO {
     private String id = "book_ex";
     private String pw = "1234";
 
-    private Connection conn = null;
-    private PreparedStatement pstmt = null;
-    private ResultSet rs = null;
+    private Connection conn;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
 
     //싱글톤 패턴
     private static MemberDAO instance;

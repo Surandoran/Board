@@ -11,6 +11,7 @@ import java.util.List;
 public class BoardListController implements SubController {
 
     BoardService service = BoardService.getInstance();
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -23,10 +24,10 @@ public class BoardListController implements SubController {
 
             int start = 0;
             int end = 0;
-            if(tmpstart == null || tmpend == null){
+            if (tmpstart == null || tmpend == null) {
                 start = 1;
                 end = 10;
-            }else {
+            } else {
                 start = Integer.parseInt(tmpstart);
                 end = Integer.parseInt(tmpend);
             }
