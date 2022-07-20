@@ -10,7 +10,7 @@
     <!--FrontController URL Mapping-->
     <servlet>
         <servlet-name>FC</servlet-name>
-        <servlet-class>com.example.controller.FrontController</servlet-class>
+        <servlet-class>com.example.korea.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FC</servlet-name>
@@ -20,7 +20,7 @@
     <!--Filter URL Mapping-->
     <filter>
         <filter-name>authority</filter-name>
-        <filter-class>com.example.filter.AuthFilter</filter-class>
+        <filter-class>com.example.korea.filter.authfilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authority</filter-name>
