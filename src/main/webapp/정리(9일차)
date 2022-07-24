@@ -1,19 +1,6 @@
 --------------------------
-2 글쓰기(파일 업로드 전)
+1 글쓰기(파일 업로드 전)
 --------------------------
-DB - Sequence 생성
-
-create sequence tbl_board_seq
-increment by 1 
-start with 501 
-Maxvalue 9999
-nocycle
-nocache
-noorder;
-
-select * from tbl_board order by no desc;
-insert into tbl_board values(tbl_board_seq.NEXTVAL,'t','c','w',sysdate,'1234',0,'127.0.0.1',0,0);
-
 
 
 
@@ -63,27 +50,26 @@ service.PostBoard(dto,parts)
 -dto Filename,Filesize를 저장
 -dao 전달
 
+
+
+
+
+
+
 --------------------------
-1 단일 파일 다운로드
+6 글읽기(첨부파일 다운로드 미포함)
 --------------------------
-1.BoardReadController 세션에 읽고있는 dto 추가
 
-2.read.jsp 에서 a태그의 url경로 추가하기()
-- URLencoder.encode();
-- UUID분리해서 파일명만 화면에 표시
 
-3./Board/download.do-BoardDownloadController 추가
 
-4.BoardService.download(filename, request, response)
 
-5. BoardService.download 처리 순서
-- 경로 받기 (Session을 통해서 dto꺼내고 email,regdete)
-- 경로 생성 c://upload/exam@exam.com/2022-06-04?
-- 헤더 설정
-- 문자셋 설정
-- 다운로드처리(스트림 가져와서 사용
-- 버퍼초기화/스트림종료
-  
+
+
+[참고] 드래그앤드랍기능(textarea에 가능여부확인)
+https://kutar37.tistory.com/entry/HTML5-Javasciprt-DragDrop-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C
+
+
+
 --------------------------
 6 글수정
 --------------------------

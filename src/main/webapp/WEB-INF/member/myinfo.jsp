@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<%@page import="com.example.korea.dto.MemberDTO" %>
+	<%@page import="com.korea.dto.MemberDTO" %>
 	<%
 		MemberDTO dto = (MemberDTO)request.getAttribute("dto");
 		
